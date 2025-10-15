@@ -1,0 +1,138 @@
+/* Import Google Fonts for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Navbar Enhancements */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: #4f46e5 !important; /* Indigo blue */
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #374151 !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #4f46e5 !important;
+}
+
+/* Cards and Forms */
+/* Existing imports and globals */
+
+/* Enhance Card and Form */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.btn-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-secondary {
+    background: #6b7280;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Home Page Specific */
+.home-hero {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.home-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.home-hero p {
+    font-size: 1.1rem;
+    color: #6b7280;
+}
+
+/* Project Cards */
+.project-card {
+    background: white;
+    border-radius: 15px;
+}
+
+.project-card .card-title {
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.project-card .scores {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-hero h1 {
+        font-size: 2rem;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
