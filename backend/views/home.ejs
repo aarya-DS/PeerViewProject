@@ -5,61 +5,277 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PeerView - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
     <link href="/css/style.css" rel="stylesheet">
     <style>
-        .home-hero {
-            background: url('https://images.unsplash.com/photo-1506784926683-7f3f8e0e7a7e?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
-            background-size: cover;
-            padding: 4rem 0;
-            color: white;
+        /* Enhanced Purple Theme for Appeal */
+        body { 
+            background-color: #f8f9ff; /* Light purple-tinted bg */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
+            color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .navbar { 
+            background-color: #6f42c1 !important; /* Purple navbar */
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3); /* Softer shadow */
+            transition: all 0.3s ease; /* Smooth hover/scroll effects */
+        }
+        .navbar:hover { 
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4); /* Enhanced on hover */
+        }
+        .navbar-brand, .nav-link, .navbar-text { 
+            color: #fff !important; /* White text on navbar */
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover { 
+            color: #e9ecef !important; /* Light hover effect */
+        }
+        .navbar-text { 
+            color: #e9ecef !important; /* Slightly muted white for welcome */
+        }
+        .hero-section { 
+            background: linear-gradient(135deg, #6f42c1 0%, #cab4ea 50%, #9f7aea 100%); /* More vibrant purple gradient */
+            color: #fff;
+            padding: 80px 0; /* Increased padding for breathing room */
+            border-radius: 0 0 30px 30px; /* Rounded bottom */
+            margin-top: -1px; /* Seamless with navbar */
             position: relative;
-            border-radius: 15px;
             overflow: hidden;
         }
-        .home-hero::before {
+        .hero-section::before { /* Subtle animated overlay for appeal */
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(189, 187, 236, 0.7), rgba(124, 58, 237, 0.7));
-            z-index: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
         }
-        .home-hero .content {
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 1.5s ease-in-out;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        .hero-section h1 { 
+            font-size: 3.5rem; /* Slightly larger for impact */
+            font-weight: 700; 
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Deeper shadow */
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out; /* Entrance animation */
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-section .lead { 
+            font-size: 1.3rem; 
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        .hero-section .greeting { 
+            font-size: 1.6rem; 
+            font-weight: 600; 
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+        .btn-upload { 
+            background-color: #007bff; /* Blue for Upload */
+            border-color: #007bff;
+            font-weight: 600;
+            padding: 15px 30px; /* Larger buttons */
+            border-radius: 50px; /* Pill-shaped for modern look */
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* Glow effect */
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-upload:hover { 
+            background-color: #0056b3; 
+            border-color: #0056b3;
+            transform: translateY(-2px); /* Lift on hover */
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+        .btn-view { 
+            background-color: #6c757d; /* Gray for View */
+            border-color: #6c757d;
+            color: #fff;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-view:hover { 
+            background-color: #545b62; 
+            border-color: #545b62;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+        }
+        .btn-logout { 
+            background-color: #dc3545; /* Red for Logout */
+            border-color: #dc3545;
+            color: #fff;
+            font-weight: 600;
+            padding: 8px 15px; /* Smaller for nav */
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-logout:hover { 
+            background-color: #c82333; 
+            border-color: #c82333;
+            transform: translateY(-1px);
+        }
+        .btn-feedback { 
+            background-color: #28a745; /* Green for Feedback */
+            border-color: #28a745;
+            color: #fff;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-feedback:hover { 
+            background-color: #218838; 
+            border-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+        .btn-generic { 
+            font-weight: 600; 
+            border-radius: 50px; /* Consistent pill shape */
+            padding: 15px 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-generic:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .non-hero { 
+            background-color: #f8f9ff;
+            padding: 80px 0; /* Increased for balance */
+            text-align: center;
+        }
+        .non-hero h1 { 
+            color: #6f42c1; /* Purple accent */
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .non-hero .lead { 
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.8rem; }
+            .hero-section .lead { font-size: 1.1rem; }
+            .hero-section .greeting { font-size: 1.3rem; }
+            .btn { font-size: 1rem; padding: 12px 20px; }
+            .d-grid { flex-direction: column !important; gap: 10px !important; }
         }
     </style>
 </head>
-<body class="bg-light">
-    <%- include('partials/navbar', { user: user }) %>
-    <div class="container mt-5">
-        <section class="home-hero">
-            <div class="content text-center">
-                <h1 class="display-3 fw-bold">Welcome to PeerView</h1>
-                <p class="lead">Collaborate, upload, and review projects with AI-powered insights.</p>
+<body>
+    <!-- Dynamic Navbar: Purple theme, welcome if logged in -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-users me-2"></i>PeerView <!-- Added icon for appeal -->
+            </a>
+            <div class="navbar-nav ms-auto">
                 <% if (user) { %>
-                    <p class="mt-4">Hi, <%= user %>!</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <a href="/create-project" class="btn btn-primary btn-lg me-md-2">Upload Project</a>
-                        <a href="/projects" class="btn btn-secondary btn-lg me-md-2">View Projects</a>
-                        <a href="/logout" class="btn btn-outline-danger btn-lg">Logout</a>
-                    </div>
+                    <span class="navbar-text me-3">
+                        <i class="fas fa-wave-square me-1"></i>Hi, <%= user %>! <!-- Icon for greeting -->
+                    </span>
+                    <a class="nav-link" href="/projects">
+                        <i class="fas fa-folder-open me-1"></i>Projects
+                    </a>
+                    <a class="nav-link" href="/create-project">
+                        <i class="fas fa-plus-circle me-1"></i>Create Project
+                    </a>
+                    <a class="nav-link" href="/feedback">
+                        <i class="fas fa-comment-dots me-1"></i>Feedback
+                    </a>
+                    <a class="nav-link" href="/feedbacks">
+                        <i class="fas fa-eye me-1"></i>View Feedbacks
+                    </a>
+                    <a class="nav-link btn-logout btn btn-sm ms-2" href="/logout">
+                        <i class="fas fa-sign-out-alt me-1"></i>Logout
+                    </a>
                 <% } else { %>
-                    <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-center">
-                        <a href="/signup" class="btn btn-primary btn-lg me-md-2">Get Started</a>
-                        <a href="/login" class="btn btn-secondary btn-lg">Login</a>
-                    </div>
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </a>
+                    <a class="nav-link" href="/signup">
+                        <i class="fas fa-user-plus me-1"></i>Sign Up
+                    </a>
                 <% } %>
             </div>
-        </section>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <% if (user) { %>
+            <!-- Logged-in Hero: Enhanced purple gradient, personalized with icons/animations -->
+            <div class="hero-section text-center text-white">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1><i class="fas fa-rocket me-2" style="font-size: 0.8em;"></i>Welcome to PeerView!</h1>
+                        <p class="lead">Collaborate, upload, and review projects with AI-powered insights.</p>
+                        <p class="greeting"><i class="fas fa-smile me-1"></i>Hi, <%= user %>!</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a href="/create-project" class="btn btn-upload btn-lg me-md-2">
+                                <i class="fas fa-cloud-upload-alt me-2"></i>Upload Project
+                            </a>
+                            <a href="/projects" class="btn btn-view btn-lg me-md-2">
+                                <i class="fas fa-list me-2"></i>View Projects
+                            </a>
+                            <a href="/feedback" class="btn btn-feedback btn-lg">
+                                <i class="fas fa-star me-2"></i>Give Feedback
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } else { %>
+            <!-- Non-logged-in: Light purple, generic with icons -->
+            <div class="non-hero text-center">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h1 class="display-4 mb-4">
+                            <i class="fas fa-users-cog me-2" style="color: #6f42c1; font-size: 0.8em;"></i>Welcome to PeerView!
+                        </h1>
+                        <p class="lead mb-4">A platform for peer project reviews.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a href="/login" class="btn btn-primary btn-lg me-md-2 btn-generic">
+                                <i class="fas fa-sign-in-alt me-2"></i>Get Started - Login
+                            </a>
+                            <a href="/signup" class="btn btn-outline-primary btn-lg btn-generic">
+                                <i class="fas fa-user-plus me-2"></i>Sign Up
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
     </div>
+    
+    <!-- Bootstrap JS for any interactive components (optional but enhances appeal) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,19 +1,34 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  reputation: { type: Number, default: 0 },
-  teamRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TeamRequest' }], // Incoming requests
-  createdAt: { type: Date, default: Date.now }
-});
-
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
+  username: { 
+    type: String, 
+    required: true, 
+    unique: true,
+    trim: true 
+  },
+  email: { 
+    type: String, 
+    required: true, 
+    unique: true,
+    lowercase: true 
+  },
+  password: { 
+    type: String, 
+    required: true 
+  },
+  isVerified: { 
+    type: Boolean, 
+    default: false 
+  },
+  verificationCode: { 
+    type: String 
+  },
+  verificationExpiry: { 
+    type: Date 
+  }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('User', userSchema);

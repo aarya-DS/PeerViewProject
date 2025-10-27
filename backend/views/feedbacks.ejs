@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerView - View Feedbacks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #e6e6fa; 
+            font-family: 'Roboto', 'Helvetica', sans-serif; 
+            color: #333;
+            line-height: 1.6;
+        }
+        .feedbacks-section { 
+            background: linear-gradient(135deg, #5a2d9c 0%, #b79cd9 100%); 
+            color: #fff;
+            padding: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .feedbacks-section h1 { 
+            font-family: 'Lora', 'Georgia', serif; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+        }
+        .table { 
+            background-color: rgba(255, 255, 255, 0.1); 
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .table th { 
+            border-color: #b79cd9; 
+            color: #fefdfe;
+            vertical-align: middle;
+        }
+        .table th { 
+            background-color: #7b49c6; 
+            font-weight: 600;
+        }
+        .table td{
+            border-color: #d1bff4; 
+            color: #7b49c6;
+            vertical-align: middle;
+        }
+        .back-link { 
+            color: #d3c6e7; 
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { color: #fff; }
+        @media (max-width: 768px) {
+            .feedbacks-section h1 { font-size: 2rem; }
+            .table { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="feedbacks-section text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <h1>View All Feedbacks</h1>
+                    <% if (feedbacks.length > 0) { %>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Rating</th>
+                                    <th>Comment</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% feedbacks.forEach(feedback => { %>
+                                    <tr>
+                                        <td><%= feedback.user ? feedback.user.username : 'Unknown' %></td>
+                                        <td><%= feedback.rating %>/5</td>
+                                        <td><%= feedback.comment %></td>
+                                        <td><%= new Date(feedback.submittedAt).toLocaleDateString() %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p class="lead">No feedback submitted yet.</p>
+                    <% } %>
+                    <p class="mt-3"><a href="/" class="back-link">← Back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
