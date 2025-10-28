@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "peerview-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "PeerView Backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["peerview", "express", "mongoose", "nodemailer"],
-  "author": "",
+  "author": "Your Name",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
